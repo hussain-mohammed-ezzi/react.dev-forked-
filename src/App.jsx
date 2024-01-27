@@ -40,3 +40,39 @@
 //   );
 // }
 
+// making the button which will be used in the toolbar
+
+export function Button({ children, onClick }) {
+  return (
+    <div>
+      <button onClick={onClick}> {children}</button>
+    </div>
+  );
+}
+
+// making the tool bar which will have two buttoons
+
+export function Toolbar({ uploadImage, notUploadmage }) {
+  return (
+    <div>
+      <Button onClick={uploadImage}>click alert</Button>
+      <Button onClick={notUploadmage}>not click alert</Button>
+    </div>
+  );
+}
+
+// making the componeet which will use the toolbar as a child
+export default function Galley() {
+  return (
+    <div>
+      <Toolbar
+        notUploadmage={() => {
+          alert("this was not passed");
+        }}
+        uploadImage={() => {
+          alert("this was pressed");
+        }}
+      />
+    </div>
+  );
+}
