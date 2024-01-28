@@ -140,3 +140,23 @@ export default function ToolBar({ message, children }) {
     </div>
   );
 }
+
+// passing event handlers as props 
+// how will  pass the ebent handler as props 
+// i can firs make a element 
+// that element will have a handler functin 
+// that hanlder will i pass as the props of the element which i have made before 
+/// so first i have to make an element or button ehich accepts a hanldre funtion and then element which uses that element and also makes hannldre functions inside it 
+
+// making the simpler element firs 
+export function Button ({onCLick}){
+  return(
+    <div> <button onClick = {onClick1}> what are you saying</button></div>
+        )
+} 
+
+
+// now we are making the function which will use this element and provdide it the handler funciton 
+export default function ButttonGallery ({}){
+  
+}
