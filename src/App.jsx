@@ -141,22 +141,75 @@ export default function ToolBar({ message, children }) {
   );
 }
 
-// passing event handlers as props 
+// reading event handlers as props 
 // how will  pass the ebent handler as props 
 // i can firs make a element 
-// that element will have a handler functin 
+// that element will reveice a handler functin 
 // that hanlder will i pass as the props of the element which i have made before 
 /// so first i have to make an element or button ehich accepts a hanldre funtion and then element which uses that element and also makes hannldre functions inside it 
 
 // making the simpler element firs 
-export function Button ({onCLick}){
-  return(
-    <div> <button onClick = {onClick1}> what are you saying</button></div>
-        )
-} 
+// export function Button ({onCLick}){
+//   return(
+//     <div> <button onClick = {onClick1}> what are you saying</button></div>
+//         )
+// } 
 
 
-// now we are making the function which will use this element and provdide it the handler funciton 
-export default function ButttonGallery ({}){
-  
+// // now we are making the function which will use this element and provdide it the handler funciton 
+// export default function ButttonGallery ({}){
+//   function HandleClick(){
+//     alert(' you just used an elelment which passes event handlers as props to child elements')
+//   }
+//   return(
+//     <div>
+//       <Button onClick = {HandleClick}/>
+//     <div>
+//   )
+// }
+
+
+// passing event handlers as props
+// how can i make this task doneg
+// i have to make two things 
+// what are those two things 
+// these are the the tool bar which will use the ulpoad button and the playmovie button 
+// than i will have to make the play movie button , the play movei button will pass the handler function as the props 
+// the uloasd button will use the inline arrow function as the props to be passed to the button 
+
+// so lets make the easied of all the  , the upload button function 
+
+import React from 'react';
+export function UploadButton() {
+  return (
+    <div>
+      <button onClick={() => { alert('your music was uploaded') }}>
+        this is the upload button
+      </button>
+    </div>
+  );
 }
+
+export function PlayMovie({ moviename }) {
+  function handlePlayMovieButton() {
+    alert(moviename);
+  }
+
+  return (
+    <div >
+      <button onClick={handlePlayMovieButton}>
+        play movie {moviename}
+      </button>
+    </div>
+  );
+}
+
+export default function ToolBar() {
+  return (
+    <div>
+      <UploadButton />
+      <PlayMovie moviename={'titanic'} />
+    </div>
+  );
+}
+
