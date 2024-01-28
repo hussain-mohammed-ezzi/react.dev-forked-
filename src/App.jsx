@@ -79,23 +79,64 @@
 
 ////Responding to the events page
 // making the button which component without any props
-import React from "react";
-export function Button() {
+// import React from "react";
+// export function Button() {
+//   return (
+//     <div>
+//       <button>click</button>
+//     </div>
+//   );
+// }
+
+/// making a button with an handle
+// export default function Button() {
+//   function handleClick() {
+//     alert("clicked");
+//   }
+//   return (
+//     <div>
+//       <button onClick={handleClick}>the alert button </button>
+//     </div>
+//   );
+// }
+
+/// using the handle function inline , not outside of the jsx
+
+// export default function Button() {
+//   return (
+//     <div>
+//       <button
+//         onClick={function () {
+//           alert("helllo");
+//         }}
+//       >
+//         click me to get a heelo{" "}
+//       </button>
+//     </div>
+//   );
+// }
+
+// using the handle inline but with an arrow function
+
+// export default function Button() {
+//   return <div onClick={() => alert("hello")}> what </div>;
+// }
+
+/// making a specific alert button and then using that in other toolbars for different messeges
+
+export function AlertButton({ message, children }) {
   return (
     <div>
-      <button>click</button>
+      <button onClick={() => alert(message)}>{children}</button>
     </div>
   );
 }
 
-/// making a button with an handle
-export function Button() {
-  function handleClick() {
-    alert("clicked");
-  }
+export default function ToolBar({ message, children }) {
   return (
     <div>
-      <button onClick={handleClick}>the alert button </button>
+      <AlertButton message="what are you saying" children="say" />
+      <AlertButton message="what are you not saing " children=" dont say" />
     </div>
   );
 }
