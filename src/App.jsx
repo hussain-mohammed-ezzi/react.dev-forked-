@@ -1,215 +1,78 @@
-// // // // here we are showing the functional
-// // // import React from "react";
+// 
 
-// // // export function Item({ name, isPacked }) {
-// // //   // all the props are provided in {}
-// // //   return (
-// // //     <div>
-// // //       {name} {isPacked && "✔️"}
-// // //     </div>
-// // //   ); // all the rendering happens inside this , all the jsx elements
-// // // }
+/// how will i make this onw 
+/// what do you have to amek it
+// i have to make an app  
+// in app i will have the toolbar components which wil be passed by the app component all the props it needs 
+// the toolbar will use the Button componets which will accept the props by the toolbart 
+// the button element will use the deatult buttons , but it will pass the handlerevent porps to onclick 
 
-// // // export default function Gallery() {
-// // //   return (
-// // //     <div>
-// // //       <h1>Shopping List</h1>
-// // //       <Item name="Apples" isPacked={true} />
-// // //       <Item name="Pomogrante" isPacked={false} />
-// // //       <Item name="Orange" isPacked={false} />
-// // //     </div>
-// // //   );
-// // // }
-
-// // ///making the pure functinos #####
-
-// // // what is not the pure funciton ##
-
-// // export function Guest({ number }) {
-// //   return <div>Guest number is {number}</div>;
-// // }
-
-// // export default function GuestGallery() {
-// //   return (
-// //     <div>
-// //       <h1>Guest List</h1>
-// //       <Guest number={1} />
-// //       <Guest number={2} />
-// //       <Guest number={3} />
-// //     </div>
-// //   );
-// // }
-
-// // making the button which will be used in the toolbar
-
-// export function Button({ children, onClick }) {
+// lets make the simplest of all the elemtns , the button one 
+// export function Button({onClick ,childern}){
 //   return (
 //     <div>
-//       <button onClick={onClick}> {children}</button>
-//     </div>
-//   );
-// }
-
-// // making the tool bar which will have two buttoons
-
-// export function Toolbar({ uploadImage, notUploadmage }) {
-//   return (
-//     <div>
-//       <Button onClick={uploadImage}>click alert</Button>
-//       <Button onClick={notUploadmage}>not click alert</Button>
-//     </div>
-//   );
-// }
-
-// // making the componeet which will use the toolbar as a child
-// export default function ToolBarGalley() {
-//   return (
-//     <div>
-//       <Toolbar
-//         notUploadmage={() => {
-//           alert("this was not passed");
-//         }}
-//         uploadImage={() => {
-//           alert("this was pressed");
-//         }}
-//       />
-//     </div>
-//   );
-// }
-
-////Responding to the events page
-// making the button which component without any props
-// import React from "react";
-// export function Button() {
-//   return (
-//     <div>
-//       <button>click</button>
-//     </div>
-//   );
-// }
-
-/// making a button with an handle
-// export default function Button() {
-//   function handleClick() {
-//     alert("clicked");
-//   }
-//   return (
-//     <div>
-//       <button onClick={handleClick}>the alert button </button>
-//     </div>
-//   );
-// }
-
-/// using the handle function inline , not outside of the jsx
-
-// export default function Button() {
-//   return (
-//     <div>
-//       <button
-//         onClick={function () {
-//           alert("helllo");
-//         }}
-//       >
-//         click me to get a heelo{" "}
+//       <button onClick = {onClick}>
+//         {childern}
 //       </button>
 //     </div>
-//   );
+//   )
 // }
 
-// using the handle inline but with an arrow function
-
-// export default function Button() {
-//   return <div onClick={() => alert("hello")}> what </div>;
+// // now lets make the function which will use this button function
+// export function Toolbar({onPlayMovieButton , onUploadMoveiButton}){
+//   return (
+//     <div>
+//       <Button onCLick = {onPlayMovieButton}>PlayMovie</Button>
+//       <Button onCLick = {onUploadMoveiButton}>UploadMovie</Button>
+//     </div>
+//   )
 // }
 
-/// making a specific alert button and then using that in other toolbars for different messeges
-
-export function AlertButton({ message, children }) {
-  return (
-    <div>
-      <button onClick={() => alert(message)}>{children}</button>
-    </div>
-  );
-}
-
-export default function ToolBar({ message, children }) {
-  return (
-    <div>
-      <AlertButton message="what are you saying" children="say" />
-      <AlertButton message="what are you not saing " children=" dont say" />
-    </div>
-  );
-}
-
-// reading event handlers as props 
-// how will  pass the ebent handler as props 
-// i can firs make a element 
-// that element will reveice a handler functin 
-// that hanlder will i pass as the props of the element which i have made before 
-/// so first i have to make an element or button ehich accepts a hanldre funtion and then element which uses that element and also makes hannldre functions inside it 
-
-// making the simpler element firs 
-// export function Button ({onCLick}){
+// // now lets make the app element which uses the tool bar and passes it the props as inline functinos 
+// export default function App (){
 //   return(
-//     <div> <button onClick = {onClick1}> what are you saying</button></div>
-//         )
-// } 
-
-
-// // now we are making the function which will use this element and provdide it the handler funciton 
-// export default function ButttonGallery ({}){
-//   function HandleClick(){
-//     alert(' you just used an elelment which passes event handlers as props to child elements')
-//   }
-//   return(
-//     <div>
-//       <Button onClick = {HandleClick}/>
-//     <div>
+//     <Toolbar onPlayMovieButton={()=>alert('you are playing a move , beware of fakhry bhai')}  onUploadMoveiButton={()=> alert('you are uploading the movei ,beware of it office ')}/>
 //   )
 // }
 
 
-// passing event handlers as props
-// how can i make this task doneg
-// i have to make two things 
-// what are those two things 
-// these are the the tool bar which will use the ulpoad button and the playmovie button 
-// than i will have to make the play movie button , the play movei button will pass the handler function as the props 
-// the uloasd button will use the inline arrow function as the props to be passed to the button 
+// lets learn how to propogate the elements till the parents 
+// but how will we do that 
+// we will do that by making an element , which uses the button in enclosed div , but that div too will have some onlclick hadler attached to it 
 
-// so lets make the easied of all the  , the upload button function 
+// now lets get back to the work 
 
-import React from 'react';
-export function UploadButton() {
-  return (
-    <div>
-      <button onClick={() => { alert('your music was uploaded') }}>
-        this is the upload button
-      </button>
+export default function HussainToolbar(){
+  return(
+    <div onClick={()=>{alert('this is an parent alert to make you laugh ')}}>
+     <button onCLick={()=>alert('you aret playing hte child componeet')}>playing</button>
+     <button onClick = {()=>alert('you are playing the child componeet 2')}>stopping</button>
     </div>
-  );
+  )
 }
 
-export function PlayMovie({ moviename }) {
-  function handlePlayMovieButton() {
-    alert(moviename);
+
+// now lets try to stop this propagation using e.stopPropgation
+// how will we do that , 
+// we will first make the button element which stops the propgations and then repeatedly used thatn 
+export function Button ({onClick}){ // hte button is accepting the handlefunction as the props 
+  function handleClick(e){
+    e.stopPropogation()
+    onClick()
   }
-
-  return (
-    <div >
-      <button onClick={handlePlayMovieButton}>
-        play movie {moviename}
-      </button>
-    </div>
-  );
-}
-
-export default function ToolBar() {
-  return (
+  return(
     <div>
-      <UploadButton />
-      <PlayMovie moviename={'titanic'} />
+    <button oncClick= { handleClick}></button>
     </div>
-  );
+  )
 }
+
+// this button element can also be written as 
+export function Button ({onClick}){ // hte button is accepting the handlefunction as the props 
+  
+  return(
+    <div>
+    <button oncClick= { handlk}></button>
+    </div>
+  )
 
